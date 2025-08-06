@@ -6,6 +6,8 @@ import path from 'path';
 const sidebarConfig = generateSidebar('./doc');
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base: '/Tims33-Blog/',
+
   title: "Tims33 Blog",
   description: "use Vitepress build blog",
   // 頁面頂部的logo
