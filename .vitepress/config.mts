@@ -78,9 +78,9 @@ export default defineConfig({
       }
     },
     //多語言功能
-    locales:{
-    root:{
-      label:'繁體中文',
+    locales: {
+    root: {
+      label: '繁體中文',
       lang: 'tw'
     }
   },
