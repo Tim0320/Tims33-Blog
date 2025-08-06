@@ -197,7 +197,7 @@ outline: false
         @click="navigateToArticle(article.path)"
       >
         <div class="article-image">
-          <img :src="article.img || '/test.jpg'" :alt="article.title || '文章圖片'" />
+          <img :src="article.img || '/Tims33-Blog/test.jpg'" :alt="article.title || '文章圖片'" />
         </div>
     <div class="article-content">
       <h3 class="article-title">{{ article.title || '無標題' }}</h3>
