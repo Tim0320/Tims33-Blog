@@ -1,0 +1,754 @@
+/**
+ * Customize default theme styling by overriding CSS variables:
+ * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
+ */
+
+/**
+ * Colors
+ *
+ * Each colors have exact same color scale system with 3 levels of solid
+ * colors with different brightness, and 1 soft color.
+ *
+ * - `XXX-1`: The most solid color used mainly for colored text. It must
+ *   satisfy the contrast ratio against when used on top of `XXX-soft`.
+ *
+ * - `XXX-2`: The color used mainly for hover state of the button.
+ *
+ * - `XXX-3`: The color for solid background, such as bg color of the button.
+ *   It must satisfy the contrast ratio with pure white (#ffffff) text on
+ *   top of it.
+ *
+ * - `XXX-soft`: The color used for subtle background such as custom container
+ *   or badges. It must satisfy the contrast ratio when putting `XXX-1` colors
+ *   on top of it.
+ *
+ *   The soft color must be semi transparent alpha channel. This is crucial
+ *   because it allows adding multiple "soft" colors on top of each other
+ *   to create a accent, such as when having inline code block inside
+ *   custom containers.
+ *
+ * - `default`: The color used purely for subtle indication without any
+ *   special meanings attached to it such as bg color for menu hover state.
+ *
+ * - `brand`: Used for primary brand colors, such as link text, button with
+ *   brand theme, etc.
+ *
+ * - `tip`: Used to indicate useful information. The default theme uses the
+ *   brand color for this by default.
+ *
+ * - `warning`: Used to indicate warning to the users. Used in custom
+ *   container, badges, etc.
+ *
+ * - `danger`: Used to show error, or dangerous message to the users. Used
+ *   in custom container, badges, etc.
+ * -------------------------------------------------------------------------- */
+
+
+:root {
+  --vp-c-default-1: var(--vp-c-gray-1);
+  --vp-c-default-2: var(--vp-c-gray-2);
+  --vp-c-default-3: var(--vp-c-gray-3);
+  --vp-c-default-soft: var(--vp-c-gray-soft);
+
+  --vp-c-brand-1: var(--vp-c-indigo-1);
+  --vp-c-brand-2: var(--vp-c-indigo-2);
+  --vp-c-brand-3: var(--vp-c-indigo-3);
+  --vp-c-brand-soft: var(--vp-c-indigo-soft);
+
+  --vp-c-tip-1: var(--vp-c-brand-1);
+  --vp-c-tip-2: var(--vp-c-brand-2);
+  --vp-c-tip-3: var(--vp-c-brand-3);
+  --vp-c-tip-soft: var(--vp-c-brand-soft);
+
+  --vp-c-warning-1: var(--vp-c-yellow-1);
+  --vp-c-warning-2: var(--vp-c-yellow-2);
+  --vp-c-warning-3: var(--vp-c-yellow-3);
+  --vp-c-warning-soft: var(--vp-c-yellow-soft);
+
+  --vp-c-danger-1: var(--vp-c-red-1);
+  --vp-c-danger-2: var(--vp-c-red-2);
+  --vp-c-danger-3: var(--vp-c-red-3);
+  --vp-c-danger-soft: var(--vp-c-red-soft);
+}
+
+/**
+ * Component: Button
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-button-brand-border: transparent;
+  --vp-button-brand-text: var(--vp-c-white);
+  --vp-button-brand-bg: var(--vp-c-brand-3);
+  --vp-button-brand-hover-border: transparent;
+  --vp-button-brand-hover-text: var(--vp-c-white);
+  --vp-button-brand-hover-bg: var(--vp-c-brand-2);
+  --vp-button-brand-active-border: transparent;
+  --vp-button-brand-active-text: var(--vp-c-white);
+  --vp-button-brand-active-bg: var(--vp-c-brand-1);
+}
+
+/**
+ * Component: Home
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(
+    120deg,
+    #41D1FF 0%,
+    #BD34FE 25%,
+    #9E5CFF 50%,
+    #8F70FF 75%,
+    #7F83FF 100%
+  );
+
+  --vp-home-hero-image-background-image: linear-gradient(
+    -45deg,
+    #41D1FF 0%,
+    #9E5CFF 50%,
+    #7F83FF 100%
+  );
+  --vp-home-hero-image-filter: blur(44px);
+}
+.VPImage.image-src{
+    width:200px;
+}
+/**
+ * Component: Custom Block
+ * -------------------------------------------------------------------------- */
+/* 英雄區塊標題的旋轉漸變動畫 */
+.VPHero .name {
+  background: var(--vp-home-hero-name-background);
+  background-size: 400% 400%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradientRotate 5s ease infinite;
+}
+
+/* 英雄區塊背景圖片的旋轉動畫 - 保持原始尺寸 */
+.VPHero .image-bg {
+  background-image: var(--vp-home-hero-image-background-image);
+  background-size: 400% 400%;
+  animation: gradientRotate 5s ease infinite;
+}
+
+/* 漸變旋轉動畫關鍵幀 */
+@keyframes gradientRotate {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (min-width: 640px) {
+  :root {
+    --vp-home-hero-image-filter: blur(56px);
+  }
+}
+
+@media (min-width: 960px) {
+  :root {
+    --vp-home-hero-image-filter: blur(68px);
+  }
+}
+
+/**
+ * Component: Custom Block
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-custom-block-tip-border: transparent;
+  --vp-custom-block-tip-text: var(--vp-c-text-1);
+  --vp-custom-block-tip-bg: var(--vp-c-brand-soft);
+  --vp-custom-block-tip-code-bg: var(--vp-c-brand-soft);
+}
+
+/**
+ * Component: Algolia
+ * -------------------------------------------------------------------------- */
+
+.DocSearch {
+  --docsearch-primary-color: var(--vp-c-brand-1) !important;
+}
+
+/**
+ * Component: On this page隨滑鼠縮放效果1
+ * -------------------------------------------------------------------------- */
+/* @ .VPDocAsideOutline .VPDocAsideOutlineTitle {
+/* @   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* @   cursor: pointer;
+/* @   border-radius: 8px;
+/* @   padding: 8px 12px;
+/* @   margin: -8px -12px;
+/* @ }
+/* @ 
+/* @ .VPDocAsideOutline .VPDocAsideOutlineTitle:hover {
+/* @   background-color: var(--vp-c-bg-soft);
+/* @   transform: translateX(4px);
+/* @   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+/* @ }
+/* @ 
+/* @ /* 點擊時的動畫效果 */
+/* @ .VPDocAsideOutline .VPDocAsideOutlineTitle:active {
+/* @   transform: translateX(2px) scale(0.98);
+/* @   transition: all 0.0.75s ease-out;
+/* @ }
+/* @ 
+/* @ /* 可選：為整個目錄區塊添加展開/收合動畫 */
+/* @ .VPDocAsideOutline .outline-items {
+/* @   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+/* @   overflow: hidden;
+/* @ }
+/* @ 
+/* @ /* 為目錄項目添加滑入動畫 */
+/* @ .VPDocAsideOutline .outline-link {
+/* @   transition: all 0.2s ease-out;
+/* @   opacity: 0.8;
+/* @ }
+/* @ 
+/* @ .VPDocAsideOutline .outline-link:hover {
+/* @   opacity: 1;
+/* @   transform: translateX(2px);
+/* @   color: var(--vp-c-brand-1);
+/* @ }
+
+/**
+ * Component: On this page隨滑鼠縮放效果2
+ * -------------------------------------------------------------------------- */
+ /* 移除 "On this page" 標題的縮放效果，只保留懸停效果 */
+
+/* 移除 "On this page" 標題的所有視覺效果 */
+.VPDocAsideOutline .VPDocAsideOutlineTitle,
+.VPDocAsideOutline .outline-title,
+[aria-label="Table of contents"] {
+  /* 移除所有懸停和點擊效果 */
+  cursor: default;
+  /* 不要添加 padding、margin、border-radius 避免產生方框 */
+}
+
+/* 完全移除標題的懸停效果 */
+.VPDocAsideOutline .VPDocAsideOutlineTitle:hover,
+.VPDocAsideOutline .outline-title:hover,
+[aria-label="Table of contents"]:hover {
+  /* 移除所有懸停效果 */
+}
+
+/* 只為目錄項目添加動畫效果 */
+.VPDocAsideOutline .outline-link {
+  transition: all 0.2s ease-out;
+  opacity: 0.8;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin: -4px -8px;
+  position: relative;
+}
+
+/* 為目錄項目添加懸停效果 */
+.VPDocAsideOutline .outline-link:hover {
+  opacity: 1;
+  transform: translateX(2px);
+  color: var(--vp-c-brand-1);
+  background-color: var(--vp-c-bg-soft);
+}
+/* 點擊時的動畫效果 */
+.VPDocAsideOutline .outline-link:active {
+  transform: scale(0.98);
+  transition: all 0.0.75s ease-out;
+}
+
+/* 確保滾動指示器正確對齊 */
+.VPDocAsideOutline .outline-marker {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 修正整個目錄容器的對齊 */
+.VPDocAsideOutline {
+  /* 確保目錄容器沒有額外的偏移 */
+}
+
+/* 確保目錄項目的滾動同步正確 */
+.VPDocAsideOutline .outline-items {
+  /* 移除可能影響滾動同步的樣式 */
+  overflow: visible;
+}
+
+/**
+ * Component: 文章內平滑動畫曲線
+ * -------------------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 文章內容滾動時的視差效果 */
+.VPDoc .vp-doc {
+  animation: contentSlideIn 0.8s ease-out;
+}
+
+@keyframes contentSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 滾動時的慣性效果 */
+.VPDoc .vp-doc * {
+  will-change: transform;
+}
+
+/* 
+-------------------- */
+/* 修改搜索框宽度 */
+.VPSearchBoxInput {
+  width: 300px;
+}
+
+/* 修改按钮样式 */
+.VPSearchBoxButton {
+  background-color: #42b983;
+  color: white;
+}
+
+
+/*
+ * 文章左側導航欄點擊動畫和懸停效果1 bug
+ * -------------------------------------------------------------------------- */
+/* .VPSidebarItem {
+/*   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* }
+/* 
+/* .VPSidebarItem .link,
+/* .VPSidebarItem .text {
+/*   display: inline-block;
+/*   transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+/*   transform-origin: center;
+/* }
+/* 
+/* /* 點擊動畫 */
+/* .VPSidebarItem .link:active,
+/* .VPSidebarItem .text:active {
+/*   transform: scale(0.92);
+/* }
+/* 
+/* /* hover 效果 */
+/* .VPSidebarItem .link:hover,
+/* .VPSidebarItem .text:hover {
+/*   transform: scale(1.05);
+/* }
+/* 
+/* /* 聚焦效果 */
+/* .VPSidebarItem .link:focus,
+/* .VPSidebarItem .text:focus {
+/*   outline: none;
+/*   transform: scale(1.02);
+/* }
+/* 
+/* /* 添加輕微的陰影效果增強視覺反饋 */
+/* .VPSidebarItem:hover {
+/*   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+/* }
+
+
+/**
+ * 文章左側導航欄點擊動畫和懸停效果2
+ * -------------------------------------------------------------------------- */
+
+/* 為所有側邊欄連結添加基礎動畫 */
+.VPSidebarItem .link {
+  transition: transform 0.2s ease-in-out;
+  transform-origin: center;
+  display: inline-block;
+}
+/* 點擊和 hover 效果 */
+.VPSidebarItem .link:active {
+  transform: scale(0.95);
+}
+.VPSidebarItem .link:hover {
+  transform: scale(1.2);
+}
+/* 只排除特定的群組標題文字 */
+/* 方法1: 使用屬性選擇器排除沒有 href 的元素 */
+.VPSidebarItem > .text:not([href]) {
+  transform: none !important;
+  transition: none !important;
+}
+/* 方法2: 更精確地定位群組標題 */
+.VPSidebarGroup > .title,
+.VPSidebarItem.group > .text {
+  transform: none !important;
+  transition: none !important;
+}
+/* 確保所有有 href 屬性的連結都保持動畫 */
+.VPSidebarItem a[href],
+.VPSidebarItem .link[href] {
+  transition: transform 0.2s ease-in-out !important;
+  transform-origin: center !important;
+  display: inline-block !important;
+}
+.VPSidebarItem a[href]:active,
+.VPSidebarItem .link[href]:active {
+  transform: scale(0.95) !important;
+}
+.VPSidebarItem a[href]:hover,
+.VPSidebarItem .link[href]:hover {
+  transform: scale(1.02) !important;
+}
+.VPSidebarItem .indicator {
+  transition: opacity 0.5 ease-in-out !important;
+  transform: none !important;
+}
+
+/*
+ * 文章左側導航欄指示器顯示方法修復
+ * -------------------------------------------------------------------------- */
+
+/* 預設隱藏所有滾動指示器 */
+.VPSidebarItem .indicator {
+  opacity: 0 !important;
+  background: white !important;
+  transition: opacity 0.3s ease-out !important;
+  transform: none !important;
+}
+/* 第三層到第五層的當前頁面都顯示指示器 */
+.VPSidebarItem .VPSidebarItem .VPSidebarItem.is-active .indicator,
+.VPSidebarItem .VPSidebarItem .VPSidebarItem .VPSidebarItem.is-active .indicator,
+.VPSidebarItem .VPSidebarItem .VPSidebarItem .VPSidebarItem .VPSidebarItem.is-active .indicator {
+  opacity: 1 !important;
+}
+/* 當第三層是當前頁面時，隱藏第四五層 */
+.VPSidebarItem .VPSidebarItem .VPSidebarItem.is-active .VPSidebarItem .indicator,
+.VPSidebarItem .VPSidebarItem .VPSidebarItem.is-active .VPSidebarItem .VPSidebarItem .indicator {
+  opacity: 0 !important;
+}
+/* 當第四層是當前頁面時，隱藏第五層 */
+.VPSidebarItem .VPSidebarItem .VPSidebarItem .VPSidebarItem.is-active .VPSidebarItem .indicator {
+  opacity: 0 !important;
+}
+
+/* 滾動指示器活躍狀態時淡入顯示 */
+.VPSidebarItem.is-active .indicator,
+.VPSidebarItem.has-active .indicator {
+  opacity: 0.7 ;
+}
+/* 滾動指示器非活躍狀態時淡出隱藏 */
+.VPSidebarItem:not(.is-active):not(.has-active) .indicator {
+  opacity: 0;
+  transition: opacity 0.75s ease-in !important;
+}
+
+/**
+ * Component: 自定義滾動軸樣式 - 解決瀏覽器滾動軸導致的版面位移問題
+ * -------------------------------------------------------------------------- */
+
+/* 純CSS控制滾動軸顯示 - Zen瀏覽器風格 */
+html {
+  scrollbar-gutter: stable;
+  overflow-y: auto;
+}
+
+/* 自定義滾動軸樣式 - WebKit瀏覽器 (Chrome, Safari, Edge) */
+/* Zen瀏覽器風格 - 極簡且只在需要時顯示 */
+html ::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+
+/* 完全移除滾動軸按鈕 - Zen風格 */
+html ::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* 完全移除滾動軸邊角 */
+html ::-webkit-scrollbar-corner {
+  display: none;
+}
+
+/* Zen風格：完全透明的軌道，永遠不顯示 */
+html ::-webkit-scrollbar-track {
+  background: transparent;
+  opacity: 0;
+}
+
+/* Zen風格滾動塊 - 預設完全隱藏 */
+html ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 1px;
+  border: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+
+/* 懸停時滾動塊變得更明顯 */
+html ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 1;
+}
+
+/* Zen風格懸停顯示 - 只顯示滾動塊 */
+html:hover ::-webkit-scrollbar-thumb {
+  opacity: 0.6 !important;
+  transition: opacity 0.1s ease-in !important;
+}
+
+/* 懸停時軌道依然透明 */
+html:hover ::-webkit-scrollbar-track {
+  background: transparent;
+  opacity: 0;
+}
+
+/* Firefox滾動軸樣式 - Zen風格 */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(139, 137, 137, 0.205) transparent;
+}
+
+/* 確保內容區域的滾動軸也使用Zen風格 */
+.VPContent ::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+
+.VPContent ::-webkit-scrollbar-button {
+  display: none;
+}
+
+.VPContent ::-webkit-scrollbar-track {
+  background: transparent;
+  opacity: 0;
+}
+
+.VPContent ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 1px;
+  border: none;
+  opacity: 0;
+  transition: opacity 0.1s ease-out;
+}
+
+.VPContent ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.35);
+  opacity: 1;
+}
+
+/* 內容區域滾動軸Zen風格 - 只在懸停時顯示 */
+.VPContent:hover ::-webkit-scrollbar-thumb {
+  opacity: 0.6 !important;
+  transition: opacity 0.1s ease-in !important;
+}
+
+.VPContent:hover ::-webkit-scrollbar-track {
+  background: transparent;
+  opacity: 0;
+}
+
+/* 隱藏其他可能的原生滾動軸 */
+.VPNav ::-webkit-scrollbar,
+.VPFooter ::-webkit-scrollbar,
+.VPLocalNav ::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  background: transparent;
+}
+
+/* 側邊欄滾動軸Zen風格 */
+.VPSidebar ::-webkit-scrollbar {
+  width: 1px;
+}
+
+.VPSidebar ::-webkit-scrollbar-button {
+  display: none;
+}
+
+.VPSidebar ::-webkit-scrollbar-track {
+  background: transparent;
+  opacity: 0;
+}
+
+.VPSidebar ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 0.5px;
+  border: none;
+  opacity: 0;
+  transition: opacity 0.1s ease-out;
+}
+
+.VPSidebar ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 1;
+}
+
+/* 側邊欄滾動軸Zen風格 - 只在懸停時顯示 */
+.VPSidebar:hover ::-webkit-scrollbar-thumb {
+  opacity: 0.5 !important;
+  transition: opacity 0.1s ease-in !important;
+}
+
+.VPSidebar:hover ::-webkit-scrollbar-track {
+  background: transparent;
+  opacity: 0;
+}
+
+/* 目錄滾動軸Zen風格 */
+.VPDocAsideOutline ::-webkit-scrollbar {
+  width: 1px;
+}
+
+.VPDocAsideOutline ::-webkit-scrollbar-button {
+  display: none;
+}
+
+.VPDocAsideOutline ::-webkit-scrollbar-track {
+  background: transparent;
+  opacity: 0;
+}
+
+.VPDocAsideOutline ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 0.5px;
+  border: none;
+  opacity: 0;
+  transition: opacity 0.1s ease-out;
+}
+
+.VPDocAsideOutline ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 1;
+}
+
+/* 目錄滾動軸Zen風格 - 只在懸停時顯示 */
+.VPDocAsideOutline:hover ::-webkit-scrollbar-thumb {
+  opacity: 0.5 !important;
+  transition: opacity 0.1s ease-in !important;
+}
+
+.VPDocAsideOutline:hover ::-webkit-scrollbar-track {
+  background: transparent;
+  opacity: 0;
+}
+
+/* 防止因滾動軸出現/消失造成的版面跳動 */
+.VPNav {
+  width: 100vw !important;
+  box-sizing: border-box !important;
+}
+
+/* 確保主要內容區域的寬度計算正確 */
+.VPContent {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* 響應式設計 - Zen風格在小螢幕上幾乎不可見 */
+@media (max-width: 768px) {
+  html ::-webkit-scrollbar {
+    width: 1px;
+    height: 1px;
+  }
+  
+  .VPContent ::-webkit-scrollbar,
+  .VPSidebar ::-webkit-scrollbar,
+  .VPDocAsideOutline ::-webkit-scrollbar {
+    width: 0.5px;
+  }
+}
+
+/* 暗色模式下的Zen風格滾動軸 */
+.dark html ::-webkit-scrollbar-track {
+  background: transparent;
+  opacity: 0;
+}
+
+.dark html ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.dark html ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* 暗色模式下的Zen風格 - 軌道永遠透明 */
+.dark html:hover ::-webkit-scrollbar-track,
+.dark .VPContent:hover ::-webkit-scrollbar-track,
+.dark .VPSidebar:hover ::-webkit-scrollbar-track,
+.dark .VPDocAsideOutline:hover ::-webkit-scrollbar-track {
+  background: transparent;
+  opacity: 0;
+}
+
+.dark .VPContent ::-webkit-scrollbar-thumb,
+.dark .VPSidebar ::-webkit-scrollbar-thumb,
+.dark .VPDocAsideOutline ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dark .VPContent ::-webkit-scrollbar-thumb:hover,
+.dark .VPSidebar ::-webkit-scrollbar-thumb:hover,
+.dark .VPDocAsideOutline ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/**
+ * 調整細微版面
+ */
+:root {
+    --vp-sidebar-width: 250px;
+    --vp-layout-max-width: 1500px;
+}
+
+/* 主題色切換：亮色/暗色 */
+:root {
+  --vp-c-bg-alt: #fffdfd70;
+  --vp-sidebar-bg-color: #fffdfd;
+  --vp-c-bg: #ffffffd0;
+  --vp-nav-bg-color: #ffffff;
+}
+.dark {
+  --vp-c-bg-alt: #16161871;
+    --vp-sidebar-bg-color: #161618;
+  --vp-c-bg: #1b1b1fc4;
+  --vp-nav-bg-color: #1b1b1f;
+}
+
+@media (min-width: 960px) {
+    .VPNavBarSearch {
+        margin-left: 55%;
+        margin-right: 50px;
+    }
+}   
+/* 全局樣式 */
+/* 禁用超連結底線 */
+a {
+  text-decoration: none;
+}
+/* .shell[data-v-ba50950c] {
+/*     position: relative;
+/*     padding: 12px;
+/*     margin: 64px auto;
+/*     display: flex
+/* ;
+/*     flex-direction: column;
+/*     gap: 16px;
+/*     background: #1a1a1e91;
+/*     width: min(100vw - 60px, 900px);
+/*     height: min-content;
+/*     max-height: min(100vh - 128px, 900px);
+/*     border-radius: 10px;
+/* }
+
