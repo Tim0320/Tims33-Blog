@@ -28,7 +28,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout  🛎️
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
@@ -36,7 +36,7 @@ jobs:
       #   with:
       #     version: 9
       # - uses: oven-sh/setup-bun@v1 # 如果使用 Bun，请取消注释
-      - name: Setup Node
+      - name: Setup Node.js 🟩
         uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -45,11 +45,11 @@ jobs:
         uses: actions/configure-pages@v4
         with:
           enablement: true
-      - name: Install dependencies
+      - name: Install dependencies 📦
         run: npm ci # 或 pnpm install / yarn install / bun install
-      - name: Build with VitePress
+      - name: Build VitePress site 🛠️
         run: npm run build # 或 pnpm docs:build / yarn docs:build / bun run docs:build
-      - name: Upload artifact
+      - name: Upload artifact for deployment 🚀
         uses: actions/upload-pages-artifact@v3
         with:
           path: docs/.vitepress/dist
