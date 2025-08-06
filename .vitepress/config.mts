@@ -22,7 +22,7 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     // 頁面頂部的logo
-    logo: 'icon/cute.jpg',
+    logo: '/cute.jpg',
     //頁面頂部的標題(預設false為不顯示)
     siteTitle: 'Tim33部落格',
     nav: [
