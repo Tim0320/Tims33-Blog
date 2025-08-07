@@ -514,12 +514,12 @@ const searchByDivination = () => {
   if (currentHexagram.value) {
     try {
       // 導航到對應的卦象文章頁面
-      const hexagramName = currentHexagram.value.name
+      const hexagramTitle = currentHexagram.value.name // 使用 name 屬性作為 title
       
       // 檢查是否在 VitePress 環境中
       if (typeof window !== 'undefined') {
         // 使用相對路徑進行導航
-        window.location.href = `./${hexagramName}`
+        window.location.href = `./${hexagramTitle}`
       }
     } catch (error) {
       console.error('導航錯誤:', error)
@@ -704,12 +704,12 @@ const toggleTag = (tag) => {
 
 // 導航到文章
 const navigateToArticle = (path) => {
-  // 使用 VitePress 路由器進行 SPA 導航
-  if (router && router.go) {
-    router.go(path)
-  } else {
-    // 備用方案：直接導航
-    window.location.href = path
+  // 從路徑中提取卦名，例如從 '/doc/Bagua/乾' 提取 '乾'
+  const hexagramName = path.split('/').pop()
+  
+  // 使用相對路徑導航
+  if (typeof window !== 'undefined') {
+    window.location.href = `./${hexagramName}`
   }
 }
 
