@@ -29,22 +29,22 @@ class NewsHotWordProvider:
         初始化提供器
         
         Args:
-            data_dir (str): 數據存儲目錄，默認為當前目錄下的 data 文件夾
+            data_dir (str): 數據存儲目錄，默認為腳本同層目錄
         """
         # 設置日誌
         logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         self.logger = logging.getLogger(self.TAG)
         
-        # 設置數據目錄
+        # 設置數據目錄 - 修改為腳本同層目錄
         if data_dir is None:
-            self.data_dir = os.path.join(os.getcwd(), "data")
+            self.data_dir = os.getcwd()  # 使用當前工作目錄（腳本同層）
         else:
             self.data_dir = data_dir
             
         # 確保數據目錄存在
         os.makedirs(self.data_dir, exist_ok=True)
         
-        # JSON 文件路徑
+        # JSON 文件路徑 - 直接在腳本同層目錄
         self.json_file_path = os.path.join(self.data_dir, "recword.json")
         
     def create_fallback_json(self):
@@ -507,11 +507,13 @@ class NewsHotWordProvider:
         """
         self.logger.info("開始從Yahoo和Google新聞獲取熱詞")
         
-        # 嘗試從本地緩存讀取
-        local_data = self.read_local_json_file()
-        if local_data:
-            self.logger.info(f"使用本地緩存數據，長度：{len(local_data)}")
-            return local_data
+        # 清除舊的 JSON 文件
+        try:
+            if os.path.exists(self.json_file_path):
+                os.remove(self.json_file_path)
+                self.logger.info("已清除舊的 JSON 文件")
+        except Exception as e:
+            self.logger.warning(f"清除舊 JSON 文件時出錯: {e}")
         
         # 從網絡獲取數據
         yahoo_news = self.fetch_yahoo_news_trending()
