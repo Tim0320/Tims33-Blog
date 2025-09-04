@@ -31,6 +31,7 @@ export default defineConfig({
       { text: '文章',
         items: [
           {text: '伏羲八卦', link: '/doc/Bagua/home' },
+          {text: 'HyperOS移植', link: '/doc/XiaomiPort/Port1' },
         ],
       },
       { text: '銘謝', link: '/markdown-examples' },

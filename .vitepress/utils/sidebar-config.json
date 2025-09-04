@@ -1,5 +1,8 @@
 {
-  "folderTitles": {},
+  "folderTitles": {
+    "Bagua":"伏羲八卦",
+    "XiaomiPort":"HyperOS Rom移植"
+  },
   "folderConfigs": {
     "/doc/Bagua": {
       "伏羲八卦": "何謂伏羲八卦",
@@ -71,6 +74,12 @@
       "小過": "!第六十二卦-小過",
       "既濟": "!第六十三卦-既濟",
       "未濟": "!第六十四卦-未濟"
+    },
+    "/doc/XiaomiPort": {
+      "Port1": "Rom移植修復方案一",
+      "Port2": "Rom移植修復方案二",
+      "Port3": "Rom移植修復方案三",
+      "Port4": "Rom移植修復方案四"
     }
   }
 }

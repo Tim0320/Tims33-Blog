@@ -15,7 +15,7 @@ hero:
       link: /doc/Bagua/home
     - theme: alt
       text: HyperOS ROM移植開發
-      link: /doc/Page_one\
+      link: /doc/XiaomiPort/Port1
 
 
 
