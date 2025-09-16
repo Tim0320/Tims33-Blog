@@ -1162,6 +1162,20 @@ const formatDate = (dateStr) => {
   font-size: 1.1rem;
 }
 
+/* 中等螢幕優化 */
+@media (max-width: 992px) and (min-width: 769px) {
+  .coin-btn {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.7rem;
+    min-width: 3.5rem;
+  }
+  
+  .coins-container {
+    gap: 0.3rem;
+    padding: 0 2% 0 0;
+  }
+}
+
 @media (max-width: 768px) {
   .article-list {
     padding: 1rem;
@@ -1296,7 +1310,7 @@ const formatDate = (dateStr) => {
 .two-column-layout {
   display: flex;
   gap: 2rem;
-  align-items: stretch;
+  align-items: stretch-start;
 
 }
 
@@ -1487,7 +1501,11 @@ const formatDate = (dateStr) => {
 .coins-container {
   display: flex;
   gap: 0.4rem;
-  padding: 0 3% 0 0 ;
+  padding: 0 3% 0 0;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .coin-btn {
@@ -1503,6 +1521,8 @@ const formatDate = (dateStr) => {
   min-width: 4rem;
   text-align: center;
   box-shadow: 0 2px 8px rgba(20, 27, 24, 0.3);
+  flex-shrink: 1;
+  box-sizing: border-box;
 }
 
 .coin-btn:hover {
@@ -1755,9 +1775,15 @@ const formatDate = (dateStr) => {
   }
   
   .coin-btn {
-    padding: 0.15rem 0.3rem;
-    font-size: 0.65rem;
-    min-width: 4rem;
+    padding: 0.15rem 0.25rem;
+    font-size: 0.6rem;
+    min-width: 2.8rem;
+    flex: 1;
+  }
+  
+  .coins-container {
+    gap: 0.2rem;
+    padding: 0;
   }
   
   .yao-result {
@@ -1795,5 +1821,38 @@ const formatDate = (dateStr) => {
     padding: 0.5rem;
     font-size: 0.7rem;
   }
+}
+
+/* 極小螢幕額外優化 */
+@media (max-width: 480px) {
+  .coin-btn {
+    padding: 0.1rem 0.2rem;
+    font-size: 0.55rem;
+    min-width: 2.2rem;
+    border-radius: 4px;
+  }
+  
+  .coins-container {
+    gap: 0.15rem;
+    justify-content: space-between;
+  }
+  
+  .yao-btn {
+    max-width: 3rem;
+    font-size: 0.6rem;
+    padding: 0.1rem 0.2rem;
+    min-width: 3rem;
+  }
+  
+  .yao-result {
+    min-width: 3rem;
+    font-size: 0.6rem;
+    padding: 0.05rem 0.1rem;
+  }
+  
+  .coin-display {
+    gap: 0.5rem;
+  }
+
 }
 </style>
