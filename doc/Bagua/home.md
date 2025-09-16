@@ -1705,7 +1705,7 @@ const formatDate = (dateStr) => {
   
   /* 手機版改為單欄 */
   .two-column-layout {
-    flex-direction: column;
+    flex-direction: flex;
     gap: 1rem;
   }
   
